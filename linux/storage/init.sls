@@ -1,4 +1,5 @@
 {%- from "linux/map.jinja" import storage with context %}
+{%- if storage.enabled %}
 include:
 {%- if storage.mount|length > 0 %}
 - linux.storage.mount
@@ -11,4 +12,6 @@ include:
 {%- endif %}
 {%- if storage.multipath.enabled %}
 - linux.storage.multipath
+{%- endif %}
+
 {%- endif %}
